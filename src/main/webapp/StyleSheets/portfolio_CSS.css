@@ -1,0 +1,206 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 27 Jun 2024, 10:31:30
+    Author     : Jonthan
+*/
+
+:root {
+  /* this has to be set to switch between light or dark */
+  color-scheme: light dark;
+
+  --light-bg: ghostwhite;
+  --light-color: black;
+
+  --dark-bg: black;
+  --dark-color: ghostwhite;
+  
+  --background:light-dark(var(--light-bg), var(--dark-bg));
+  --colour:light-dark(var(--light-color), var(--dark-color));
+  --background-R:light-dark(var(--dark-bg), var(--light-bg));
+  --colour-R:light-dark(var(--dark-color), var(--light-color));   
+      
+}
+
+*{
+    box-sizing: border-box;
+}
+html,body{
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body{
+    /* Colour */
+    background: var(--background);
+    color: var(--colour);
+    
+    /* Padding */
+    padding: 5px;
+    
+}
+
+/* Background image */
+.background{
+    /* Position */
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    /* Width and Height */
+    width: 100%;
+    min-height: 100vh;
+    
+    /* Background picture */
+    background-image: url("../Pictures/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* To the back */
+    z-index: -1;
+    
+    /* Blur */
+    filter: blur(10px);
+}
+
+/* Start of Header */
+header{
+    /* Width and Height */
+    width: 100%;
+    height: fit-content;
+    
+    /* Display */
+    display: flex;
+    justify-content: space-between;
+
+    /* Padding */
+    padding:1%;
+}
+header .logo,.nav{
+    font-size: 25px;
+}
+
+    /* Look of anchor tag */
+    header .nav>a{
+    /* Looks */
+    text-decoration: none;
+    
+    /* Colour */
+    background: var(--background);
+    color: var(--colour);
+    
+    /* Border */
+    border: 2px solid var(--background);
+    border-radius: 20px;
+    
+    /* Padding */
+    padding: 5px;
+    
+    /* Transition */
+    transition-duration: 1s; 
+}
+    header .nav>a:hover{
+    /* Colour */
+    background: var(--background-R);
+    color: var(--colour-R);    
+}
+
+/* End of Header */
+
+/* Start of Main */
+main{
+    /* Width */
+    width: 100%;
+ 
+    /* Display */
+    display: grid;
+    padding: 5px;
+    
+    /* Grid Style */
+    gap: 10px;
+    grid-template-columns: 1fr;
+}
+
+    main .panel{
+    border: 2px solid;
+    }
+        /* About Section */
+        main .panel.about{
+          /* Display */
+          display: grid;
+          grid-template-columns: repeat(6,1fr);
+          gap: 20px;
+        }
+            main .panel.about>*{
+                padding: 5px;
+                
+            }
+            main .panel.about label{
+                /* Grid placement */
+                grid-column: 2/4;
+                
+                /* Width and Height */
+                width: 100%;
+                height: 100%;
+                
+                /* Font */
+                font-size: 50px;
+                   
+            }
+            main .panel.about img{
+                /* Grid placement */
+                grid-column: 4/7;
+                
+                /* Width and Height */
+                width: 100%;
+                height: 100%;
+                   
+            }
+            main .panel.about >*{
+                grid-row: 1/2;
+            }
+                @media all and (max-width: 873px) {
+                    main .panel.about img{ grid-row: 1/3}
+                    main .panel.about label{grid-row: 2/3}
+                }
+            
+        /* Projects Section */    
+        main .panel.projects{
+            /* Display Grid Layout */
+            display: grid;
+            grid-template-rows: repeat(10,1fr);
+            grid-gap: 1px;
+            
+            /* Padding */
+            padding: 10px;
+        }
+            main .panel.projects a{
+                /* Grid Placement */
+                grid-row: 2/11;
+                
+                border: 2px solid black;
+                background-color: white;              
+                
+                /* Transformation Duration */
+                transition-duration: 0.5s;
+                filter: brightness(0.4);
+                
+            }
+                main .panel.projects a:hover{
+                  filter: brightness(1);  
+                }
+                main .panel.projects a:hover + a{
+                  filter: brightness(0.7);  
+                }
+                main .panel.projects a:has( + a:hover){
+                  filter: brightness(0.7);  
+                }
+/* End of Main */
+
+/* Start of Footer */
+footer{}
+
+/* End of Footer */
